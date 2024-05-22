@@ -1,0 +1,76 @@
+<h1>Modificar Productos</h1>
+
+<h2>Crear Nuevo Producto</h2>
+<form action="/make/crear" method="POST">
+  <div>
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" required>
+  </div>
+  <div>
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
+  </div>
+  <div>
+    <label for="code">Código:</label>
+    <input type="text" id="code" name="code" required>
+  </div>
+  <div>
+    <label for="precio">Precio:</label>
+    <input type="number" id="precio" name="precio" step="0.01" required>
+  </div>
+  <div>
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" name="cantidad" required>
+  </div>
+  <div>
+    <label for="marca">Marca:</label>
+    <input type="text" id="marca" name="marca" required>
+  </div>
+  <div>
+    <label for="categoria">Categoría:</label>
+    <input type="text" id="categoria" name="categoria" required>
+  </div>
+  <div>
+    <label for="demografia">Demografía:</label>
+    <select id="demografia" name="demografia" required>
+      <option value="u">U</option>
+      <option value="m">M</option>
+      <option value="h">H</option>
+      <option value="n">N</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Crear Producto</button>
+  </div>
+</form>
+
+<h2>Borrar Producto</h2>
+<form action="/make/borrar" method="POST">
+  <!-- Formulario para borrar un producto -->
+  <label for="idProducto">ID del Producto a Borrar:</label>
+  <input type="text" id="idProducto" name="idProducto" required>
+  <button type="submit">Borrar Producto</button>
+</form>
+
+<h2>Modificar Producto</h2>
+<form action="/make/modificar" method="POST">
+  <label for="idProducto">ID del Producto a Modificar:</label>
+  <input type="text" id="idProducto" name="idProducto" required>
+
+  <label for="campo">Campo a Modificar:</label>
+  <select id="campo" name="campo" required>
+    <option value="titulo">Título</option>
+    <option value="descripcion">Descripción</option>
+    <option value="code">Código</option>
+    <option value="precio">Precio</option>
+    <option value="cantidad">Cantidad</option>
+    <option value="marca">Marca</option>
+    <option value="categoria">Categoría</option>
+    <option value="demografia">Demografía</option>
+  </select>
+
+  <label for="valor">Nuevo Valor:</label>
+  <input type="text" id="valor" name="valor" required>
+
+  <button type="submit">Modificar Producto</button>
+</form>

@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.min.css " rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <title>{{title}}</title>
+</head>
+
+<body>
+  {{{body}}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+  <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.all.min.js "></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.agregar-carrito').click(function (e) {
+        e.preventDefault(); // Evitar que el enlace recargue la página
+
+        const idProducto = $(this).data('id');
+        const idCarrito = {{user.cart}} // ID del carrito fijo
+
+        $.post(`/carts/${idCarrito}/productos/${idProducto}`, function (data, status) {
+          alert(data); // Mostrar mensaje de éxito
+        }).fail(function (xhr, status, error) {
+          alert(`Error: ${xhr.responseText}`); // Mostrar mensaje de error
+        });
+      });
+    });
+    // Obtenemos el formulario por su ID
+        const form = document.getElementById('purchaseForm');
+        // Escuchamos el evento 'submit' del formulario
+        form.addEventListener('submit', (event) => {
+            // Prevenimos el comportamiento predeterminado de envío del formulario
+            event.preventDefault();
+            // Realizamos la solicitud POST manualmente
+            fetch(form.action, {
+                method: form.method,
+                body: new URLSearchParams(new FormData(form))
+            })
+            .then(response => {
+                // Si la respuesta es exitosa, redirigimos al usuario a la página /home
+                if (response.ok) {
+                    window.location.href = '/';
+                } else {
+                    console.error('Error al realizar la compra');
+                    // Puedes manejar otros casos de error aquí
+                }
+            })
+            .catch(error => {
+                console.error('Error al realizar la compra:', error);
+                // Puedes manejar errores de red aquí
+            });
+        });
+  </script>
+  <script src="/js/index.js"></script>
+</body>
+
+</html>

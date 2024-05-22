@@ -1,0 +1,16 @@
+<h1>Lista de Productos</h1>
+<ul>
+  {{#each productos}}
+  <li>{{this.titulo}} - {{this.descripcion}} ({{this.marca}}) - ${{this.precio}} -
+    Cantidad: {{this.cantidad}} - Categoría: {{this.categoria}}
+  </li>
+  {{/each}}
+</ul>
+
+{{>logout}}
+
+{{>user}}
+
+{{>toMake}}
+
+{{>toChat}}

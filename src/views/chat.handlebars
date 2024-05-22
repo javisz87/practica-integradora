@@ -1,0 +1,18 @@
+<p>chat</p>
+
+<h1>Messages</h1>
+<ul>
+    {{#each messages}}
+    <li>
+        <strong>{{this.user}}</strong>: {{this.message}} - {{this.date}}
+    </li>
+    {{/each}}
+</ul>
+
+<h1>Chat en tiempo real</h1>
+<ul id="messages"></ul>
+<form id="form" action="">
+    <input id="username" placeholder="Usuario" autocomplete="off" /><br>
+    <input id="message" placeholder="Escribe tu mensaje" autocomplete="off" /><br>
+    <button>Enviar</button>
+</form>
